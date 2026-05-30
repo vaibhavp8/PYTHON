@@ -1,0 +1,34 @@
+import time
+
+def countdown_timer(seconds):
+    """
+    A simple countdown timer that prints the remaining time each second.
+    """
+    while seconds > 0:
+        # Use divmod to get minutes and seconds for a cleaner display
+        mins, secs = divmod(seconds, 60)
+        
+        # Format the time to always show two digits (e.g., 01:05)
+        timer_display = f"{mins:02d}:{secs:02d}"
+        
+        # Print the remaining time, using '\r' to stay on the same line
+        print(timer_display, end="\n")
+        
+        # Wait for 1 second
+        time.sleep(1)
+        
+        # Decrement the total number of seconds
+        seconds -= 1
+        
+    print("Countdown complete!")
+
+if __name__ == "__main__":
+    try:
+        # Ask the user for the number of seconds
+        user_input = input("Enter the countdown time in seconds: ")
+        t = int(user_input)
+        
+        countdown_timer(t)
+        
+    except ValueError:
+        print("Invalid input. Please enter a valid number of seconds.")
